@@ -12,7 +12,23 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+.PHONY: help Makefile gettext html-all
+
+# 生成翻译模板
+gettext:
+	$(SPHINXBUILD) -b gettext $(SOURCEDIR) $(BUILDDIR)/gettext
+	sphinx-intl update -p $(BUILDDIR)/gettext -l zh_CN
+
+# 构建多语言文档 
+html-all:
+	# English
+	$(SPHINXBUILD) -b html $(SOURCEDIR) $(BUILDDIR)/html/en
+	# Chinese
+	$(SPHINXBUILD) -b html -D language=zh_CN $(SOURCEDIR) $(BUILDDIR)/html/zh_CN
+
+# 实时预览
+livehtml:
+	sphinx-autobuild source build/html/en
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

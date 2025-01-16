@@ -16,6 +16,22 @@ author = "support@weilan.com"
 release = __version__
 version = __version__
 
+
+# -- Internationalization -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#internationalization
+
+locale_dirs = ['locale/']   # 翻译文件的路径
+gettext_compact = False     # 每个文件单独生成 pot 文件
+gettext_uuid = True        # 添加唯一的消息标识符
+gettext_location = True    # 添加源文件位置信息
+gettext_auto_build = True  # 自动构建翻译文件
+
+language = 'zh_CN'         # 默认语言
+languages = [
+    ('en', 'English'),
+    ('zh_CN', '简体中文'),
+]
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
